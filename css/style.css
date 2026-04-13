@@ -167,7 +167,6 @@ body {
   border: 2px solid #475569;
   cursor: pointer;
   appearance: none;
-  -webkit-appearance: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,81 +197,6 @@ body {
   color: #64748b;
 }
 
-.open-drawer-btn {
-  background: #334155;
-  color: #94a3b8;
-  border: none;
-  padding: 8px 14px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 10px;
-  transition: background 0.2s;
-}
-
-.open-drawer-btn:hover {
-  background: #475569;
-}
-
-.delete-task-btn {
-  background: #450a0a;
-  color: #ef4444;
-  border: none;
-  padding: 8px 14px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.2s, background 0.2s;
-}
-
-.task-item:hover .delete-task-btn {
-  opacity: 1;
-}
-
-.delete-task-btn:hover {
-  background: #7f1d1d;
-}
-
-/* Due Date */
-.task-due-date {
-  font-size: 12px;
-  color: #94a3b8;
-  background: #334155;
-  padding: 2px 8px;
-  border-radius: 6px;
-  margin-left: 8px;
-}
-
-.command-bar .date-input {
-  padding: 14px 16px;
-  border: none;
-  background: #0f172a;
-  border-radius: 12px;
-  color: #f1f5f9;
-  font-size: 14px;
-}
-
-.due-date-section {
-  margin: 16px 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.due-date-section label {
-  font-size: 14px;
-  color: #94a3b8;
-}
-
-.due-date-picker {
-  padding: 10px 14px;
-  border: none;
-  background: #0f172a;
-  border-radius: 10px;
-  color: #f1f5f9;
-  font-size: 14px;
-}
-
 /* Drawer */
 .overlay {
   position: fixed;
@@ -295,144 +219,91 @@ body {
 }
 
 @keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .hidden {
   display: none;
 }
 
-.drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #334155;
+/* ========================= */
+/* RESPONSIVE DESIGN */
+/* ========================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .app {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 22px 18px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .command-bar {
+    flex-direction: column;
+  }
+
+  .command-bar button {
+    width: 100%;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .open-drawer-btn,
+  .delete-task-btn {
+    align-self: flex-end;
+  }
 }
 
-.drawer-header button {
-  background: #334155;
-  border: none;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 10px;
-}
+/* Mobile */
+@media (max-width: 480px) {
+  .app {
+    padding: 12px;
+  }
 
-.drawer-content h2 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-}
+  .header h1 {
+    font-size: 22px;
+  }
 
-.drawer-content h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #94a3b8;
-  margin: 20px 0 12px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+  .subtitle {
+    font-size: 13px;
+  }
 
-/* Progress Bar */
-.progress-bar-container {
-  width: 100%;
-  height: 8px;
-  background: #0f172a;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 8px;
-}
+  .command-bar input {
+    font-size: 14px;
+  }
 
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #7c3aed, #a855f7);
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
+  .command-bar button {
+    font-size: 14px;
+    padding: 12px;
+  }
 
-.progress-text {
-  font-size: 13px;
-  color: #94a3b8;
-}
+  .filter-btn {
+    font-size: 13px;
+    padding: 10px;
+  }
 
-/* Subtask Items */
-.subtask-item {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background: #0f172a;
-  border-radius: 12px;
-  margin-bottom: 8px;
-}
+  .task-text {
+    font-size: 15px;
+  }
 
-.subtask-item label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  cursor: pointer;
-}
-
-.subtask-item .subtask-checkbox {
-  width: 20px;
-  height: 20px;
-}
-
-.subtask-item span {
-  font-size: 15px;
-}
-
-.subtask-item.completed span {
-  text-decoration: line-through;
-  color: #64748b;
-}
-
-.delete-subtask-btn {
-  background: #450a0a;
-  color: #ef4444;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-.drawer-content input {
-  width: 100%;
-  padding: 12px 14px;
-  border: none;
-  background: #0f172a;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #f1f5f9;
-  margin-bottom: 8px;
-  outline: none;
-}
-
-.drawer-content input:focus {
-  background: #1e293b;
-}
-
-.drawer-content button {
-  background: #334155;
-  color: #f1f5f9;
-  border: none;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 10px;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #334155;
-  margin: 24px 0;
+  /* Fullscreen drawer on mobile */
+  .task-drawer {
+    width: 100%;
+    border-radius: 0;
+  }
 }
