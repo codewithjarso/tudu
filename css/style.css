@@ -1,0 +1,90 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #0f172a;
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.subtitle {
+  color: #9ca3af;
+}
+
+/* INPUT BAR */
+.command-bar {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.command-bar input {
+  flex: 1;
+  padding: 10px;
+}
+
+.command-bar button {
+  padding: 10px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+}
+
+/* TASK LIST */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 5px;
+  background: #1e293b;
+  cursor: pointer;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* DRAWER */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.task-drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: #111827;
+  padding: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+button {
+  cursor: pointer;
+}
