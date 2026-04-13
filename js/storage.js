@@ -5,7 +5,12 @@ const Storage = {
   
   // Load tasks from localStorage
   load() {
+    try{
     return JSON.parse(localStorage.getItem(this.KEY)) || [];
+    } catch (e){
+      console.error("Failed to load tasks:", e);
+    return [];
+    }
   },
   
   // Save tasks to localStorage
