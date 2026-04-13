@@ -47,15 +47,73 @@ body {
 .task-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   margin-bottom: 5px;
   background: #1e293b;
   cursor: pointer;
 }
 
-.task-item.completed span {
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+}
+
+.task-item.completed .task-text {
   text-decoration: line-through;
-  color: gray;
+  color: #6b7280;
+}
+
+.delete-task-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.delete-task-btn:hover {
+  background: #dc2626;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #374151;
+  color: #d1d5db;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.filter-btn:hover {
+  background: #4b5563;
+}
+
+.filter-btn.active {
+  background: #7c3aed;
+  color: white;
 }
 
 /* DRAWER */
@@ -87,4 +145,67 @@ body {
 
 button {
   cursor: pointer;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background: #374151;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #7c3aed;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+/* Subtasks in drawer */
+.subtask-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 5px;
+  background: #1e293b;
+}
+
+.subtask-item.completed span {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.subtask-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.delete-subtask-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+/* Open drawer button */
+.open-drawer-btn {
+  background: #374151;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
 }
