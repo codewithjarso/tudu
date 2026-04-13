@@ -18,6 +18,7 @@ const UI = {
     this.elements.progressText = document.getElementById('progressText');
     this.elements.toggleCompleteBtn = document.getElementById('toggleCompleteBtn');
     this.elements.taskStatus = document.getElementById('taskStatus');
+    this.elements.taskDueDate = document.getElementById('taskDueDate');
   },
   
   // Update task counts display
@@ -27,6 +28,13 @@ const UI = {
     if (this.elements.countDone) this.elements.countDone.textContent = counts.done;
   },
   
+  // Format date for display
+  formatDate(dateStr) {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  },
+
   // Render task list based on filter
   renderTaskList(tasks, filter, onToggle, onDelete, onOpenDrawer) {
     if (!this.elements.taskList) return;
@@ -41,12 +49,14 @@ const UI = {
     }
     
     filteredTasks.forEach(task => {
+      const dueDateHtml = task.dueDate ? `<span class="task-due-date">${this.formatDate(task.dueDate)}</span>` : '';
       const li = document.createElement('li');
       li.className = `task-item ${task.completed ? 'completed' : ''}`;
       li.innerHTML = `
         <label class="task-label" onclick="event.stopPropagation()">
           <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} data-id="${task.id}">
           <span class="task-text">${task.title}</span>
+          ${dueDateHtml}
         </label>
         <button class="open-drawer-btn" data-id="${task.id}">⋮</button>
         <button class="delete-task-btn" data-id="${task.id}">×</button>
@@ -90,6 +100,11 @@ const UI = {
     this.elements.taskTitle.textContent = task.title;
     this.elements.toggleCompleteBtn.textContent = task.completed ? '✔' : '○';
     this.elements.taskStatus.textContent = task.completed ? 'Done' : 'In Progress';
+    
+    // Set due date
+    if (this.elements.taskDueDate) {
+      this.elements.taskDueDate.value = task.dueDate || '';
+    }
     
     this.elements.overlay.classList.remove('hidden');
     this.elements.taskDrawer.classList.remove('hidden');

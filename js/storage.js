@@ -14,15 +14,26 @@ const Storage = {
   },
   
   // Add a new task
-  addTask(tasks, title) {
+  addTask(tasks, title, dueDate = null) {
     const task = {
       id: Date.now().toString(),
       title: title,
+      dueDate: dueDate,
       completed: false,
       subtasks: []
     };
     tasks.push(task);
     this.save(tasks);
+    return tasks;
+  },
+
+  // Update task due date
+  updateTaskDueDate(tasks, taskId, dueDate) {
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+      task.dueDate = dueDate;
+      this.save(tasks);
+    }
     return tasks;
   },
   
