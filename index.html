@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TuDu</title>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
 <div class="app">
@@ -15,13 +17,20 @@
     <!-- HEADER -->
     <header class="header">
       <h1>TuDu</h1>
-      <p class="subtitle">Productivity To-Do App</p>
+      <p class="subtitle">Smart Task Manager</p>
     </header>
 
-    <!-- ADD TASK -->
+    <!-- ADD TASK BAR -->
     <div class="command-bar">
-      <input id="taskInput" type="text" placeholder="Add a task..." />
-      <button id="addTaskBtn">Add</button>
+      <input id="taskInput" type="text" placeholder="Write a task..." />
+      <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All(<span id="countAll">0</span>)</button>
+      <button class="filter-btn" data-filter="active">Active(<span id="countActive">0</span>)</button>
+      <button class="filter-btn" data-filter="done">Done(<span id="countDone">0</span>)</button>
     </div>
 
     <!-- TASK LIST -->
@@ -30,45 +39,76 @@
   </div>
 </div>
 
-<!-- DRAWER -->
+---
+
+<!-- # 📌 TASK DRAWER (IMPORTANT PART) -->
+
+<!-- OVERLAY -->
 <div id="overlay" class="overlay hidden"></div>
 
+<!-- DRAWER -->
 <aside id="taskDrawer" class="task-drawer hidden">
 
+  <!-- HEADER -->
   <div class="drawer-header">
-    <span id="taskStatus">In Progress</span>
+
+    <div>
+      <button id="toggleCompleteBtn">✔</button>
+      <span id="taskStatus">In Progress</span>
+    </div>
+
     <div>
       <button id="deleteTaskBtn">🗑</button>
       <button id="closeDrawerBtn">✕</button>
     </div>
+
   </div>
 
+  <!-- CONTENT -->
   <div class="drawer-content">
 
+    <!-- TITLE -->
     <h2 id="taskTitle"></h2>
     <p id="taskDesc"></p>
 
-    <!-- PRIORITY
-    <div id="priorityGroup"></div> -->
+    <!-- DUE DATE -->
+    <div id="dueDate"></div>
+
+    <!-- PRIORITY -->
+    <div id="priorityGroup"></div>
+
+    <!-- TAGS (optional future) -->
+    <div id="tags"></div>
+
+    <hr />
 
     <!-- SUBTASKS -->
     <h3>Subtasks</h3>
+    <div class="progress-bar-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+    <p id="progressText" class="progress-text">0 of 0 subtasks completed</p>
     <div id="subtaskList"></div>
 
     <input id="subtaskInput" placeholder="Add subtask..." />
-    <button id="addSubtaskBtn">+</button>
+    <button id="addSubtaskBtn">Add</button>
+
+    <hr />
 
     <!-- COMMENTS -->
     <h3>Comments</h3>
     <div id="commentList"></div>
 
     <input id="commentInput" placeholder="Add comment..." />
-    <button id="addCommentBtn">+</button>
+    <button id="addCommentBtn">Add</button>
 
   </div>
 
 </aside>
 
+---
+
+<!-- SCRIPTS -->
 <script src="js/models.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/ui.js"></script>
