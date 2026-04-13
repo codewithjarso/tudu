@@ -8,6 +8,7 @@ let selectedTaskId = null;
 // DOM Elements
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
+const dueDateInput = document.getElementById('dueDateInput');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const subtaskInput = document.getElementById('subtaskInput');
 const addSubtaskBtn = document.getElementById('addSubtaskBtn');
@@ -15,6 +16,7 @@ const toggleCompleteBtn = document.getElementById('toggleCompleteBtn');
 const deleteTaskBtn = document.getElementById('deleteTaskBtn');
 const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 const overlay = document.getElementById('overlay');
+const taskDueDate = document.getElementById('taskDueDate');
 
 // Initialize
 function init() {
@@ -42,8 +44,10 @@ function handleAddTask() {
   const title = taskInput.value.trim();
   if (!title) return;
   
-  tasks = Storage.addTask(tasks, title);
+  const dueDate = dueDateInput.value || null;
+  tasks = Storage.addTask(tasks, title, dueDate);
   taskInput.value = '';
+  dueDateInput.value = '';
   render();
 }
 
@@ -68,6 +72,13 @@ function handleOpenDrawer(taskId) {
   UI.openDrawer(task);
   UI.renderSubtasks(task, handleToggleSubtask, handleDeleteSubtask);
   UI.updateProgressBar(task);
+}
+
+// Handle due date change in drawer
+function handleDueDateChange(e) {
+  if (!selectedTaskId) return;
+  tasks = Storage.updateTaskDueDate(tasks, selectedTaskId, e.target.value || null);
+  render();
 }
 
 // Handle close drawer
@@ -159,6 +170,7 @@ function setupEventListeners() {
   deleteTaskBtn.addEventListener('click', handleDeleteTaskFromDrawer);
   closeDrawerBtn.addEventListener('click', handleCloseDrawer);
   overlay.addEventListener('click', handleCloseDrawer);
+  if (taskDueDate) taskDueDate.addEventListener('change', handleDueDateChange);
 }
 
 // Start the app

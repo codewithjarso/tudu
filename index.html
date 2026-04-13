@@ -23,6 +23,7 @@
     <!-- ADD TASK BAR -->
     <div class="command-bar">
       <input id="taskInput" type="text" placeholder="Write a task..." />
+      <input id="dueDateInput" type="date" class="date-input" />
       <button id="addTaskBtn">Add Task</button>
     </div>
 
@@ -39,7 +40,8 @@
   </div>
 </div>
 
----
+<!-- --- -->
+
 
 <!-- # 📌 TASK DRAWER (IMPORTANT PART) -->
 
@@ -72,7 +74,10 @@
     <p id="taskDesc"></p>
 
     <!-- DUE DATE -->
-    <div id="dueDate"></div>
+    <div class="due-date-section">
+      <label>Due Date:</label>
+      <input type="date" id="taskDueDate" class="due-date-picker" />
+    </div>
 
     <!-- PRIORITY -->
     <div id="priorityGroup"></div>
@@ -96,20 +101,19 @@
     <hr />
 
     <!-- COMMENTS -->
-    <h3>Comments</h3>
+    <!-- <h3>Comments</h3>
     <div id="commentList"></div>
 
     <input id="commentInput" placeholder="Add comment..." />
     <button id="addCommentBtn">Add</button>
 
-  </div>
+  </div> -->
 
 </aside>
 
----
+<!-- --- -->
 
 <!-- SCRIPTS -->
-<script src="js/models.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/app.js"></script>
