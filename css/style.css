@@ -1,114 +1,125 @@
+/* BentoGrid Design System - Dark Theme */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   background: #0f172a;
-  color: white;
+  color: #f1f5f9;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header Card */
+.header {
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .header h1 {
   margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
-  color: #9ca3af;
+  color: #94a3b8;
+  font-size: 15px;
+  margin: 4px 0 0 0;
 }
 
-/* INPUT BAR */
+/* Command Bar Card */
 .command-bar {
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 16px;
   display: flex;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .command-bar input {
   flex: 1;
-  padding: 10px;
+  padding: 14px 16px;
+  border: none;
+  background: #0f172a;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #f1f5f9;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.command-bar input:focus {
+  background: #1e293b;
+}
+
+.command-bar input::placeholder {
+  color: #64748b;
 }
 
 .command-bar button {
-  padding: 10px;
-  background: #7c3aed;
+  padding: 14px 24px;
+  background: #0071e3;
   color: white;
   border: none;
-}
-
-/* TASK LIST */
-.task-list {
-  list-style: none;
-  padding: 0;
-}
-
-.task-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 5px;
-  background: #1e293b;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
 }
 
-.task-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  flex: 1;
+.command-bar button:hover {
+  background: #0077ed;
 }
 
-.task-checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+.command-bar button:active {
+  transform: scale(0.98);
 }
 
-.task-text {
-  flex: 1;
-}
-
-.task-item.completed .task-text {
-  text-decoration: line-through;
-  color: #6b7280;
-}
-
-.delete-task-btn {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.delete-task-btn:hover {
-  background: #dc2626;
-}
-
-/* FILTERS */
+/* Filters Card */
 .filters {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .filter-btn {
-  background: #374151;
-  color: #d1d5db;
+  flex: 1;
+  background: transparent;
+  color: #94a3b8;
   border: none;
-  padding: 8px 16px;
+  padding: 12px 16px;
   cursor: pointer;
   font-size: 14px;
-  border-radius: 4px;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .filter-btn:hover {
-  background: #4b5563;
+  background: #334155;
+  color: #f1f5f9;
 }
 
 .filter-btn.active {
@@ -116,21 +127,140 @@ body {
   color: white;
 }
 
-/* DRAWER */
+/* Task List Card */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: #1e293b;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #475569;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  background: transparent;
+}
+
+.task-checkbox:checked {
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.task-checkbox:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.task-text {
+  font-size: 16px;
+  font-weight: 400;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.open-drawer-btn {
+  background: #334155;
+  color: #94a3b8;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.open-drawer-btn:hover {
+  background: #475569;
+}
+
+.delete-task-btn {
+  background: #450a0a;
+  color: #ef4444;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.task-item:hover .delete-task-btn {
+  opacity: 1;
+}
+
+.delete-task-btn:hover {
+  background: #7f1d1d;
+}
+
+/* Drawer */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
 }
 
 .task-drawer {
   position: fixed;
   right: 0;
   top: 0;
-  width: 350px;
+  width: 380px;
+  max-width: 100%;
   height: 100%;
-  background: #111827;
-  padding: 15px;
+  background: #1e293b;
+  padding: 24px;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .hidden {
@@ -140,72 +270,129 @@ body {
 .drawer-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #334155;
 }
 
-button {
+.drawer-header button {
+  background: #334155;
+  border: none;
+  padding: 10px 16px;
   cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.drawer-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.drawer-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 20px 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Progress Bar */
 .progress-bar-container {
   width: 100%;
-  height: 10px;
-  background: #374151;
-  border-radius: 5px;
+  height: 8px;
+  background: #0f172a;
+  border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .progress-bar {
   height: 100%;
-  background: #7c3aed;
-  transition: width 0.3s;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 4px;
+  transition: width 0.3s ease;
 }
 
 .progress-text {
-  font-size: 12px;
-  color: #9ca3af;
-  margin-bottom: 10px;
+  font-size: 13px;
+  color: #94a3b8;
 }
 
-/* Subtasks in drawer */
+/* Subtask Items */
 .subtask-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 8px;
-  margin-bottom: 5px;
-  background: #1e293b;
-}
-
-.subtask-item.completed span {
-  text-decoration: line-through;
-  color: #6b7280;
+  padding: 12px;
+  background: #0f172a;
+  border-radius: 12px;
+  margin-bottom: 8px;
 }
 
 .subtask-item label {
   display: flex;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  gap: 12px;
   flex: 1;
+  cursor: pointer;
+}
+
+.subtask-item .subtask-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.subtask-item span {
+  font-size: 15px;
+}
+
+.subtask-item.completed span {
+  text-decoration: line-through;
+  color: #64748b;
 }
 
 .delete-subtask-btn {
-  background: #ef4444;
-  color: white;
+  background: #450a0a;
+  color: #ef4444;
   border: none;
-  padding: 2px 8px;
+  padding: 6px 12px;
   cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
-/* Open drawer button */
-.open-drawer-btn {
-  background: #374151;
-  color: white;
+.drawer-content input {
+  width: 100%;
+  padding: 12px 14px;
   border: none;
-  padding: 5px 10px;
+  background: #0f172a;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.drawer-content input:focus {
+  background: #1e293b;
+}
+
+.drawer-content button {
+  background: #334155;
+  color: #f1f5f9;
+  border: none;
+  padding: 10px 16px;
   cursor: pointer;
-  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #334155;
+  margin: 24px 0;
 }
